@@ -1,0 +1,28 @@
+[GLOBAL]
+pants_version = "2.22.0"
+backend_packages = [
+  "pants.backend.python",
+]
+colors = true
+
+[anonymous-telemetry]
+enabled = false
+
+[source]
+root_patterns = ["/"]
+
+[python]
+interpreter_constraints = ['==3.12.*']
+enable_resolves = true
+resolves_generate_lockfiles = false
+run_against_entire_lockfile = true
+
+[python.resolves]
+python-default = "requirements.txt"
+
+[pytest]
+install_from_resolve = "python-default"
+requirements = [
+  "//:reqs0#pytest",
+  "//:reqs0#pytest-mock",
+]
